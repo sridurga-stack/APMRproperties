@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="offer-timer-bar">
+  <div class="offer-content">
+    <strong>Limited Time Offer:</strong>
+    Prices increasing soon — offer ends in
+    <span id="countdown"></span>
+  </div>
+</div>
+
+    <title>APMR  – DTCP Approved Plots for Sale</title>
+    <meta name="description" content="Own DTCP-approved plots in Aler with bank loan, EMIs and clear title. Secure investment, premium layout, site visits available. భూమి సొంతం… ఆదాయం నిరంతరం.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a',
+                        secondary: '#d4a017'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+      /* Plots red banner styles */
+      .plots-banner-wrapper{ display:flex; justify-content:center; margin:0.5rem 0; }
+      .plots-banner{
+        background:#dc2626; color:#fff; padding:0.5rem 1rem; border-radius:0.375rem;
+        font-weight:800; display:inline-block; box-shadow:0 2px 6px rgba(0,0,0,0.12);
+      }
+      .plots-banner a{ color:inherit; text-decoration:none; font-weight:900; }
+      .plots-banner:focus, .plots-banner a:focus{ outline:2px solid rgba(255,255,255,0.15); outline-offset:2px; }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-feather="home" class="text-secondary"></i>
+                <span class="font-bold text-xl">APMR Properties Pvt Ltd</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#why" class="hover:text-secondary transition">Why Invest</a>
+                <a href="price.html" class="hover:text-secondary transition">Pricing</a>
+                <a href="#location" class="hover:text-secondary transition">Location</a>
+                <a href="#gallery" class="hover:text-secondary transition">Gallery</a>
+                <a href="#contact" class="hover:text-secondary transition">Contact</a>
+            </div>
+            <a href="tel:9177292529" class="bg-secondary px-4 py-2 rounded-md font-medium hover:bg-yellow-600 transition flex items-center">
+                <i data-feather="phone" class="mr-2"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- Plots red banner (lies below APMR Properties and above the hero H1) -->
+    <div class="plots-banner-wrapper" aria-hidden="false">
+      <div class="plots-banner" role="link" tabindex="0" onclick="location.href='plots.html'">
+        <a href="plots.html">Plots</a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white">
+        <div class="container mx-auto px-2 py-0 md:py-0 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Own DTCP-Approved Plots in Aler</h1>
+                <h2 class="text-xl md:text-2xl text-gray-700 mb-6">Flexible EMIs • Bank Loan Available • Clear Title • Safe Investment</h2>
+                <p class="text-lg text-gray-800 mb-8">భూమి సొంతం… ఆదాయం నిరంతరం</p>
+                
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <div class="flex items-center bg-gray-100 px-3 py-2 rounded">
+                        <i data-feather="check-circle" class="text-secondary mr-2"></i>
+                        <span>DTCP Approved</span>
+                    </div>
+                    <div class="flex items-center bg-gray-100 px-3 py-2 rounded">
+                        <i data-feather="check-circle" class="text-secondary mr-2"></i>
+                        <span>100% Vaastu</span>
+                    </div>
+                    <div class="flex items-center bg-gray-100 px-3 py-2 rounded">
+                        <i data-feather="check-circle" class="text-secondary mr-2"></i>
+                        <span>Immediate Registration</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-900 transition text-center">
+                        Get Price & Layout
+                    </a>
+                    <a href="#visit" class="bg-secondary text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-yellow-600 transition text-center">
+                        Book Free Site Visit
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="assets/logo.png" alt="APMR Logo" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Invest Section -->
+    <section id="why" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Why Choose Green Valley at Aler?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-secondary mb-4">
+                        <i data-feather="trending-up" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fast-growing residential zone</h3>
+                    <p class="text-gray-600">Strategic location with high appreciation potential in coming years.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-secondary mb-4">
+                        <i data-feather="map" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Near National Highway</h3>
+                    <p class="text-gray-600">Excellent connectivity with easy access to major transportation routes.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-secondary mb-4">
+                        <i data-feather="dollar-sign" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">High appreciation potential</h3>
+                    <p class="text-gray-600">Proven track record of value growth in the surrounding areas.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-secondary mb-4">
+                        <i data-feather="home" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Ready infrastructure nearby</h3>
+                    <p class="text-gray-600">All essential amenities and facilities available in the vicinity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Snapshot -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Replaced heading + two images with single Project Highlights image from Assets -->
+            <div class="mb-8 text-center">
+                <img src="Assets/PH.png" alt="Project Highlights" class="rounded-lg shadow-md mx-auto w-full max-w-3xl h-auto mb-6">
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <div class="flex items-center">
+                    <i data-feather="check" class="text-secondary mr-2"></i>
+                    <span>DTCP Approved</span>
+                </div>
+                <div class="flex items-center">
+                    <i data-feather="check" class="text-secondary mr-2"></i>
+                    <span>Ready Layout</span>
+                </div>
+                <div class="flex items-center">
+                    <i data-feather="check" class="text-secondary mr-2"></i>
+                    <span>Gated Concept</span>
+                </div>
+                <div class="flex items-center">
+                    <i data-feather="check" class="text-secondary mr-2"></i>
+                    <span>Avenue Plantation</span>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="plots.html" class="inline-block bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-900 transition">
+                    View Project Details
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Transparent Pricing — No Hidden Charges</h2>
+            
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div class="text-center mb-8">
+                    <p class="text-xl mb-4">Plots starting from competitive market price</p>
+                    <p class="text-lg text-secondary font-medium mb-4">Flexible EMIs available</p>
+                    <p class="text-red-600 font-medium">Prices may increase soon</p>
+                </div>
+                
+                <div class="text-center">
+                    <a href="price.html" class="inline-block bg-secondary text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-yellow-600 transition">
+                        View Price Sheet
+                    </a>
+                    <p class="mt-4 text-gray-600 font-medium">Limited plots available — secure your plot today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Site Visit Form -->
+    <section id="visit" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-primary text-white rounded-lg shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-3xl font-bold mb-4">Book a Free Site Visit</h2>
+                        <p class="mb-6">Schedule your visit to see the plots in person and get all your questions answered.</p>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-1">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 rounded text-gray-900">
+                            </div>
+                            <div>
+                                <label for="mobile" class="block mb-1">Mobile Number</label>
+                                <input type="tel" id="mobile" class="w-full px-4 py-2 rounded text-gray-900">
+                            </div>
+                            <div>
+                                <label for="date" class="block mb-1">Preferred Visit Date</label>
+                                <input type="date" id="date" class="w-full px-4 py-2 rounded text-gray-900">
+                            </div>
+                            <button type="submit" class="w-full bg-secondary text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-yellow-600 transition">
+                                Book Free Site Visit
+                            </button>
+                        </form>
+                        <p class="mt-4 text-sm opacity-80">No spam. Our team will contact you once to confirm.</p>
+                    </div>
+                    <div class="md:w-1/2 bg-gray-100 hidden md:block">
+                        <!-- changed: use local asset instead of external static.photos -->
+                        <img src="Assets/BAA.png" alt="Site Visit" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Advantage -->
+    <section id="location" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Perfect Location for Growth</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="text-secondary mr-3 mt-1"></i>
+                            <span>5 min to Warangal Highway</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="home" class="text-secondary mr-3 mt-1"></i>
+                            <span>Good residential development nearby</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="navigation" class="text-secondary mr-3 mt-1"></i>
+                            <span>Easy highway connectivity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="book" class="text-secondary mr-3 mt-1"></i>
+                            <span>Educational and devotional zones nearby</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="sun" class="text-secondary mr-3 mt-1"></i>
+                            <span>Peaceful investment atmosphere</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <a href="#" id="get-directions" class="inline-block bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-900 transition" role="button" aria-haspopup="dialog">
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded">
+                        <!-- Map placeholder -->
+                        <div class="w-full h-64 relative">
+                            <!-- Responsive map image from Assets -->
+                            <img src="Assets/LH.png" alt="Location Map" class="w-full h-full object-cover rounded">
+
+                            <!-- Clickable overlay for the red spot.
+                                 Adjust left/top % values to precisely cover the red spot if needed. -->
+                            <a href="location.html" aria-label="Open detailed location" class="absolute" 
+                               style="left:62%; top:34%; width:48px; height:48px; transform:translate(-50%,-50%); display:block; cursor:pointer;">
+                                <span class="sr-only">Open detailed location</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Trusted by Hundreds of Happy Plot Owners</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary mr-3">
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The documentation process was very smooth and transparent. Happy with my investment in Green Valley."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/100x100/1" alt="Customer" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium">Ramesh Kumar</p>
+                            <p class="text-sm text-gray-500">Plot Owner since 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary mr-3">
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Excellent location with good appreciation potential. The team was very helpful throughout the process."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/100x100/2" alt="Customer" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium">Sujatha Reddy</p>
+                            <p class="text-sm text-gray-500">Plot Owner since 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary mr-3">
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                            <i data-feather="star" class="fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Got exactly what was promised. The legal team made sure all documents were perfect before registration."</p>
+                    <div class="flex items-center">
+                        <img src="http://static.photos/people/100x100/3" alt="Customer" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium">Vikram Sharma</p>
+                            <p class="text-sm text-gray-500">Plot Owner since 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="inline-grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <p class="text-3xl font-bold text-primary">15+</p>
+                        <p class="text-gray-600">Completed Projects</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <p class="text-3xl font-bold text-primary">80+</p>
+                        <p class="text-gray-600">Satisfied Plot Owners</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <p class="text-3xl font-bold text-primary">100%</p>
+                        <p class="text-gray-600">Legal Clearance</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <p class="text-3xl font-bold text-primary">DTCP</p>
+                        <p class="text-gray-600">Approved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Company -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-primary mb-6">About APMR Properties Pvt Ltd</h2>
+                <p class="text-lg text-gray-700 mb-8">
+                    APMR Properties Pvt Ltd focuses on safe, legally clear, value-driven real estate projects designed for long-term appreciation and steady returns.
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-blue-900 transition">
+                        Contact Us
+                    </a>
+                    <a href="tel:9177292529" class="bg-secondary text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-yellow-600 transition">
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Own Your Plot Today — Don't Miss the Opportunity</h2>
+            <p class="text-xl mb-8">Limited plots available at current pricing</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="price.html" class="bg-secondary text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-yellow-600 transition">
+                    Get Price Sheet
+                </a>
+                <a href="#visit" class="bg-white text-primary px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition">
+                    Book Site Visit
+                </a>
+                <a href="tel:9177292529" class="border border-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-primary transition flex items-center justify-center">
+                    <i data-feather="phone" class="mr-2"></i> Call Now
+                </a>
+                <a href="https://wa.me/9177292529" class="border border-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-primary transition flex items-center justify-center">
+                    <i data-feather="message-square" class="mr-2"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i data-feather="home" class="text-secondary mr-2"></i>
+                        APMR Properties Pvt Ltd
+                    </h3>
+                    <p class="mb-4">DTCP Approved Plots , Green Valley at Aler with clear titles and excellent appreciation potential.</p>
+                    <p class="text-sm text-gray-400">భూమి సొంతం… ఆదాయం నిరంతరం</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <p class="mb-2 flex items-center">
+                        <i data-feather="map-pin" class="text-secondary mr-2"></i>
+                        H.No: 498, Near Padma Nagar Ringroad, Phase 2, Chintal, Hyderabad, Telangana – 500054
+                    </p>
+                    <p class="mb-2 flex items-center">
+                        <i data-feather="phone" class="text-secondary mr-2"></i>
+                        <a href="tel:9177292529">9177292529</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i data-feather="mail" class="text-secondary mr-2"></i>
+                        <a href="mailto:pr2pmr@gmail.com">pr2pmr@gmail.com</a>
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#why" class="hover:text-secondary transition">Why Invest</a></li>
+                        <li><a href="price.html" class="hover:text-secondary transition">Pricing</a></li>
+                        <li><a href="#location" class="hover:text-secondary transition">Location</a></li>
+                        <li><a href="#gallery" class="hover:text-secondary transition">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 APMR Properties Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Call/WhatsApp Buttons -->
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col space-y-3">
+        <a href="tel:9177292529" class="bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition">
+            <i data-feather="phone"></i>
+        </a>
+        <a href="https://wa.me/9177292529" class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition">
+            <i data-feather="message-square"></i>
+        </a>
+    </div>
+
+    <!-- Modal for Location Map -->
+    <div id="sfl-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50" role="dialog" aria-modal="true" aria-hidden="true">
+	<div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4 relative">
+		<button id="sfl-close" aria-label="Close" class="absolute top-2 right-2 text-gray-700 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow">×</button>
+		<img src="Assets/SFL.png" alt="SFL" class="w-full h-auto block">
+		<div class="p-4 text-right">
+			<a href="location.html" class="inline-block bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-900 transition">Open Map</a>
+		</div>
+	</div>
+</div>
+
+    <script>
+	(function(){
+		const btn = document.getElementById('get-directions');
+		const modal = document.getElementById('sfl-modal');
+		const closeBtn = document.getElementById('sfl-close');
+		function openModal(){
+			modal.classList.remove('hidden');
+			modal.setAttribute('aria-hidden','false');
+			document.body.style.overflow = 'hidden';
+		}
+		function closeModal(){
+			modal.classList.add('hidden');
+			modal.setAttribute('aria-hidden','true');
+			document.body.style.overflow = '';
+		}
+		btn && btn.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+		closeBtn && closeBtn.addEventListener('click', closeModal);
+		modal && modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+		document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+	})();
+</script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>

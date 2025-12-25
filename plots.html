@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turupugudem Grampanchayat - Plot Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .plot-box {
+            min-height: 60px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .plot-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="w-full min-h-screen p-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-4">
+                <h1 class="text-2xl font-bold text-center mb-2">Turupugudem Grampanchayat</h1>
+                <p class="text-center text-sm text-gray-600">TLP NO.: 165/2023/H | Jeedikal To Suryapet Highway - 100Ft Road</p>
+                <p class="text-center text-xs text-gray-500 mt-1">Plan Showing The Approved Dtcp Layout In Sy.nos: 237/P, 249/P & 259/P</p>
+                <p class="text-center text-xs text-gray-500">Situated at: Kollru Village, Alair Mandal, Yadadri Bhongir District</p>
+                
+                <!-- Legend -->
+                <div class="flex justify-center gap-6 mt-4 text-sm flex-wrap">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-yellow-100 border-2 border-yellow-400"></div>
+                        <span>120 SQ.YARDS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-white border-2 border-blue-400"></div>
+                        <span>240 SQ.YARDS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-green-200 border-2 border-green-500"></div>
+                        <span>Other sizes</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-gray-400"></div>
+                        <span>SOLD</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plot Grid -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div id="plotGrid" class="grid grid-cols-10 gap-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full p-6 m-4">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Plot Details</h2>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="border-b pb-3">
+                    <label class="text-sm text-gray-600">Plot Number</label>
+                    <p id="modalPlotNumber" class="text-xl font-bold text-gray-800"></p>
+                </div>
+                
+                <div class="border-b pb-3">
+                    <label class="text-sm text-gray-600">Size</label>
+                    <p id="modalSize" class="text-xl font-semibold text-blue-600"></p>
+                </div>
+                
+                <div class="border-b pb-3">
+                    <label class="text-sm text-gray-600">Direction</label>
+                    <p id="modalDirection" class="text-xl font-semibold text-green-600"></p>
+                </div>
+                
+                <div class="border-b pb-3">
+                    <label class="text-sm text-gray-600">Status</label>
+                    <p id="modalStatus" class="text-xl font-bold"></p>
+                </div>
+
+                <button id="toggleButton" onclick="toggleStatus()" class="w-full py-3 rounded-lg font-semibold transition-colors">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Plot data
+        const plots = {
+            1: { number: "1", size: "120", direction: "South", status: "available" },
+            "2/A": { number: "2/A", size: "120", direction: "South", status: "available" },
+            2: { number: "2", size: "120", direction: "South", status: "available" },
+            "3/A": { number: "3/A", size: "120", direction: "South", status: "available" },
+            3: { number: "3", size: "120", direction: "South", status: "available" },
+            "4/P": { number: "4/P", size: "120", direction: "South", status: "available" },
+            4: { number: "4", size: "120", direction: "South", status: "available" },
+            "5/P": { number: "5/P", size: "120", direction: "South", status: "available" },
+            5: { number: "5", size: "120", direction: "South", status: "available" },
+            "6/P": { number: "6/P", size: "120", direction: "South", status: "available" },
+            6: { number: "6", size: "120", direction: "South", status: "available" },
+            "7/A": { number: "7/A", size: "120", direction: "South", status: "available" },
+            7: { number: "7", size: "120", direction: "South", status: "available" },
+            "8/A": { number: "8/A", size: "120", direction: "South", status: "available" },
+            8: { number: "8", size: "120", direction: "South", status: "available" },
+            "9/P": { number: "9/P", size: "120", direction: "North", status: "available" },
+            9: { number: "9", size: "120", direction: "North", status: "available" },
+            "10/A": { number: "10/A", size: "120", direction: "North", status: "available" },
+            10: { number: "10", size: "120", direction: "North", status: "available" },
+            "11/A": { number: "11/A", size: "120", direction: "North", status: "available" },
+            11: { number: "11", size: "120", direction: "North", status: "available" },
+            "12/A": { number: "12/A", size: "120", direction: "North", status: "available" },
+            12: { number: "12", size: "120", direction: "North", status: "available" },
+            "13/A": { number: "13/A", size: "120", direction: "North", status: "available" },
+            13: { number: "13", size: "120", direction: "North", status: "available" },
+            "14/A": { number: "14/A", size: "120", direction: "North", status: "available" },
+            14: { number: "14", size: "120", direction: "North", status: "available" },
+            "15/P": { number: "15/P", size: "120", direction: "North", status: "available" },
+            15: { number: "15", size: "120", direction: "North", status: "available" },
+            "16/P": { number: "16/P", size: "120", direction: "North", status: "available" },
+            16: { number: "16", size: "120", direction: "North", status: "available" },
+            17: { number: "17", size: "240", direction: "South", status: "available" },
+            18: { number: "18", size: "240", direction: "South", status: "available" },
+            "19/A": { number: "19/A", size: "240", direction: "South", status: "available" },
+            19: { number: "19", size: "240", direction: "South", status: "available" },
+            "20/A": { number: "20/A", size: "240", direction: "South", status: "available" },
+            20: { number: "20", size: "240", direction: "South", status: "available" },
+            "21/A": { number: "21/A", size: "240", direction: "South", status: "available" },
+            21: { number: "21", size: "240", direction: "South", status: "available" },
+            "22/A": { number: "22/A", size: "240", direction: "South", status: "available" },
+            22: { number: "22", size: "240", direction: "South", status: "available" },
+            "23/A": { number: "23/A", size: "240", direction: "South", status: "available" },
+            23: { number: "23", size: "240", direction: "South", status: "available" },
+            "24/P": { number: "24/P", size: "240", direction: "South", status: "available" },
+            24: { number: "24", size: "240", direction: "South", status: "available" },
+            "25/P": { number: "25/P", size: "240", direction: "North", status: "available" },
+            25: { number: "25", size: "240", direction: "North", status: "available" },
+            "26/A": { number: "26/A", size: "240", direction: "North", status: "available" },
+            26: { number: "26", size: "240", direction: "North", status: "available" },
+            "27/A": { number: "27/A", size: "240", direction: "North", status: "available" },
+            27: { number: "27", size: "240", direction: "North", status: "available" },
+            "28/A": { number: "28/A", size: "240", direction: "North", status: "available" },
+            28: { number: "28", size: "240", direction: "North", status: "available" },
+            "29/A": { number: "29/A", size: "240", direction: "North", status: "available" },
+            29: { number: "29", size: "240", direction: "North", status: "available" },
+            "30/A": { number: "30/A", size: "240", direction: "North", status: "available" },
+            30: { number: "30", size: "240", direction: "North", status: "available" },
+            31: { number: "31", size: "240", direction: "North", status: "available" },
+            32: { number: "32", size: "240", direction: "North", status: "available" },
+            33: { number: "33", size: "144.8", direction: "West", status: "available" },
+            34: { number: "34", size: "120", direction: "West", status: "available" },
+            35: { number: "35", size: "135.9", direction: "West", status: "available" },
+            36: { number: "36", size: "120", direction: "West", status: "available" },
+            37: { number: "37", size: "151.1", direction: "West", status: "available" },
+            38: { number: "38", size: "120", direction: "West", status: "available" },
+            39: { number: "39", size: "163.6", direction: "West", status: "available" },
+            40: { number: "40", size: "120", direction: "West", status: "available" },
+            41: { number: "41", size: "120", direction: "West", status: "available" },
+            42: { number: "42", size: "120", direction: "West", status: "available" },
+            43: { number: "43", size: "150.4", direction: "West", status: "available" },
+            44: { number: "44", size: "120", direction: "West", status: "available" },
+            45: { number: "45", size: "134.3", direction: "West", status: "available" },
+            46: { number: "46", size: "120", direction: "West", status: "available" },
+            47: { number: "47", size: "142.6", direction: "West", status: "available" },
+            48: { number: "48", size: "120", direction: "West", status: "available" },
+            49: { number: "49", size: "130.9", direction: "West", status: "available" },
+            50: { number: "50", size: "120", direction: "West", status: "available" },
+            51: { number: "51", size: "151.1", direction: "West", status: "available" },
+            52: { number: "52", size: "120", direction: "West", status: "available" },
+            53: { number: "53", size: "114.4", direction: "West", status: "available" },
+            54: { number: "54", size: "120", direction: "West", status: "available" },
+            55: { number: "55", size: "150.4", direction: "West", status: "available" },
+            56: { number: "56", size: "120", direction: "West", status: "available" },
+            57: { number: "57", size: "140.3", direction: "West", status: "available" },
+            58: { number: "58", size: "120", direction: "West", status: "available" },
+            59: { number: "59", size: "150.8", direction: "West", status: "available" },
+            60: { number: "60", size: "120", direction: "West", status: "available" },
+            61: { number: "61", size: "135", direction: "West", status: "available" },
+            62: { number: "62", size: "120", direction: "West", status: "available" },
+            63: { number: "63", size: "130.9", direction: "West", status: "available" },
+            64: { number: "64", size: "120", direction: "West", status: "available" },
+            65: { number: "65", size: "118", direction: "West", status: "available" },
+            66: { number: "66", size: "120", direction: "West", status: "available" },
+            67: { number: "67", size: "177", direction: "East", status: "available" },
+            68: { number: "68", size: "240", direction: "East", status: "available" },
+            69: { number: "69", size: "240", direction: "East", status: "available" },
+            70: { number: "70", size: "142.8", direction: "East", status: "available" },
+            71: { number: "71", size: "120", direction: "East", status: "available" },
+            72: { number: "72", size: "136.9", direction: "East", status: "available" },
+            73: { number: "73", size: "120", direction: "East", status: "available" },
+            74: { number: "74", size: "164", direction: "East", status: "available" },
+            75: { number: "75", size: "120", direction: "East", status: "available" },
+            76: { number: "76", size: "135.8", direction: "East", status: "available" },
+            77: { number: "77", size: "120", direction: "East", status: "available" },
+            78: { number: "78", size: "120", direction: "East", status: "available" },
+            79: { number: "79", size: "120", direction: "East", status: "available" },
+            80: { number: "80", size: "158.3", direction: "East", status: "available" },
+            81: { number: "81", size: "120", direction: "East", status: "available" },
+            82: { number: "82", size: "147", direction: "East", status: "available" },
+            83: { number: "83", size: "120", direction: "East", status: "available" },
+            84: { number: "84", size: "140", direction: "East", status: "available" },
+            85: { number: "85", size: "120", direction: "East", status: "available" },
+            86: { number: "86", size: "127.2", direction: "East", status: "available" },
+            87: { number: "87", size: "120", direction: "East", status: "available" },
+            88: { number: "88", size: "135", direction: "East", status: "available" },
+            89: { number: "89", size: "120", direction: "East", status: "available" },
+            90: { number: "90", size: "107.4", direction: "East", status: "available" },
+            91: { number: "91", size: "120", direction: "East", status: "available" },
+            92: { number: "92", size: "139.1", direction: "East", status: "available" },
+            93: { number: "93", size: "120", direction: "East", status: "available" },
+            94: { number: "94", size: "135.6", direction: "East", status: "available" },
+            95: { number: "95", size: "120", direction: "East", status: "available" },
+            96: { number: "96", size: "147.6", direction: "East", status: "available" },
+            97: { number: "97", size: "120", direction: "East", status: "available" },
+            98: { number: "98", size: "152.6", direction: "East", status: "available" },
+            99: { number: "99", size: "120", direction: "East", status: "available" },
+            100: { number: "100", size: "147.6", direction: "East", status: "available" },
+            101: { number: "101", size: "120", direction: "East", status: "available" },
+            102: { number: "102", size: "114.6", direction: "East", status: "available" },
+            103: { number: "103", size: "120", direction: "East", status: "available" },
+            104: { number: "104", size: "240", direction: "West", status: "available" },
+            105: { number: "105", size: "240", direction: "West", status: "available" },
+            106: { number: "106", size: "240", direction: "East", status: "available" },
+            107: { number: "107", size: "240", direction: "East", status: "available" },
+            108: { number: "108", size: "240", direction: "West", status: "available" },
+            109: { number: "109", size: "240", direction: "West", status: "available" },
+            110: { number: "110", size: "240", direction: "East", status: "available" },
+            111: { number: "111", size: "240", direction: "East", status: "available" },
+            112: { number: "112", size: "240", direction: "West", status: "available" },
+            113: { number: "113", size: "240", direction: "West", status: "available" },
+            114: { number: "114", size: "240", direction: "East", status: "available" },
+            115: { number: "115", size: "240", direction: "East", status: "available" },
+            116: { number: "116", size: "240", direction: "West", status: "available" },
+            117: { number: "117", size: "240", direction: "West", status: "available" },
+            118: { number: "118", size: "240", direction: "East", status: "available" },
+            119: { number: "119", size: "240", direction: "East", status: "available" },
+            120: { number: "120", size: "240", direction: "West", status: "available" },
+            121: { number: "121", size: "240", direction: "West", status: "available" },
+            122: { number: "122", size: "240", direction: "East", status: "available" },
+            123: { number: "123", size: "240", direction: "East", status: "available" },
+            124: { number: "124", size: "240", direction: "West", status: "available" },
+            125: { number: "125", size: "240", direction: "West", status: "available" },
+            126: { number: "126", size: "240", direction: "East", status: "available" },
+            127: { number: "127", size: "240", direction: "East", status: "available" },
+            128: { number: "128", size: "240", direction: "West", status: "available" },
+            129: { number: "129", size: "240", direction: "West", status: "available" },
+            130: { number: "130", size: "240", direction: "East", status: "available" },
+            131: { number: "131", size: "240", direction: "East", status: "available" },
+            132: { number: "132", size: "435.8", direction: "North", status: "available" },
+            133: { number: "133", size: "120", direction: "North", status: "available" },
+            134: { number: "134", size: "453.4", direction: "North", status: "available" },
+            135: { number: "135", size: "120", direction: "North", status: "available" },
+            136: { number: "136", size: "369.6", direction: "North", status: "available" },
+            137: { number: "137", size: "120", direction: "North", status: "available" },
+            138: { number: "138", size: "351.1", direction: "North", status: "available" },
+            139: { number: "139", size: "120", direction: "North", status: "available" },
+            140: { number: "140", size: "396.8", direction: "North", status: "available" },
+            141: { number: "141", size: "120", direction: "North", status: "available" },
+            142: { number: "142", size: "417.3", direction: "North", status: "available" },
+            143: { number: "143", size: "120", direction: "North", status: "available" },
+            144: { number: "144", size: "337.9", direction: "North", status: "available" },
+            145: { number: "145", size: "120", direction: "North", status: "available" },
+            146: { number: "146", size: "240", direction: "East", status: "available" },
+            147: { number: "147", size: "240", direction: "East", status: "available" },
+            148: { number: "148", size: "240", direction: "East", status: "available" },
+            149: { number: "149", size: "240", direction: "East", status: "available" },
+            150: { number: "150", size: "240", direction: "East", status: "available" },
+            151: { number: "151", size: "240", direction: "East", status: "available" },
+            152: { number: "152", size: "240", direction: "East", status: "available" },
+            153: { number: "153", size: "240", direction: "East", status: "available" },
+            154: { number: "154", size: "240", direction: "East", status: "available" },
+            155: { number: "155", size: "240", direction: "East", status: "available" },
+            156: { number: "156", size: "240", direction: "East", status: "available" },
+            157: { number: "157", size: "240", direction: "East", status: "available" },
+            158: { number: "158", size: "240", direction: "East", status: "available" },
+            159: { number: "159", size: "240", direction: "East", status: "available" },
+            160: { number: "160", size: "240", direction: "East", status: "available" },
+            161: { number: "161", size: "240", direction: "East", status: "available" },
+            162: { number: "162", size: "240", direction: "East", status: "available" },
+            163: { number: "163", size: "240", direction: "East", status: "available" },
+            164: { number: "164", size: "240", direction: "East", status: "available" },
+            165: { number: "165", size: "240", direction: "East", status: "available" },
+            166: { number: "166", size: "391.80", direction: "East", status: "available" },
+            167: { number: "167", size: "120", direction: "East", status: "available" },
+            168: { number: "168", size: "102.6", direction: "East", status: "available" },
+            169: { number: "169", size: "120", direction: "East", status: "available" },
+            170: { number: "170", size: "161.1", direction: "East", status: "available" },
+            171: { number: "171", size: "120", direction: "East", status: "available" },
+            172: { number: "172", size: "120.9", direction: "East", status: "available" },
+            173: { number: "173", size: "120", direction: "East", status: "available" },
+            174: { number: "174", size: "143", direction: "East", status: "available" }
+        };
+
+        let currentPlotKey = null;
+
+        function getPlotColor(size, status) {
+            if (status === 'sold') return 'bg-gray-400 border-gray-600';
+            if (size === "120") return 'bg-yellow-100 border-yellow-400';
+            if (size === "240") return 'bg-white border-blue-400';
+            return 'bg-green-200 border-green-500';
+        }
+
+        function renderPlots() {
+            const grid = document.getElementById('plotGrid');
+            grid.innerHTML = '';
+            
+            Object.entries(plots).forEach(([key, plot]) => {
+                const plotDiv = document.createElement('div');
+                plotDiv.className = `plot-box ${getPlotColor(plot.size, plot.status)} border-2 p-2 rounded flex flex-col justify-center items-center font-semibold`;
+                plotDiv.innerHTML = `
+                    <div class="text-red-600">${plot.number}</div>
+                    <div class="text-blue-600 text-[10px]">${plot.size}</div>
+                `;
+                plotDiv.onclick = () => openModal(key);
+                grid.appendChild(plotDiv);
+            });
+        }
+
+        function openModal(plotKey) {
+            currentPlotKey = plotKey;
+            const plot = plots[plotKey];
+            
+            document.getElementById('modalPlotNumber').textContent = plot.number;
+            document.getElementById('modalSize').textContent = plot.size + ' SQ.YARDS';
+            document.getElementById('modalDirection').textContent = plot.direction;
+            
+            const statusEl = document.getElementById('modalStatus');
+            statusEl.textContent = plot.status.toUpperCase();
+            statusEl.className = `text-xl font-bold ${plot.status === 'available' ? 'text-green-600' : 'text-red-600'}`;
+            
+            const btn = document.getElementById('toggleButton');
+            btn.textContent = `Mark as ${plot.status === 'available' ? 'SOLD' : 'AVAILABLE'}`;
+            btn.className = `w-full py-3 rounded-lg font-semibold transition-colors ${
+                plot.status === 'available' 
+                    ? 'bg-red-500 hover:bg-red-600 text-white' 
+                    : 'bg-green-500 hover:bg-green-600 text-white'
+            }`;
+            
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            currentPlotKey = null;
+        }
+
+        function toggleStatus() {
+            if (currentPlotKey) {
+                plots[currentPlotKey].status = plots[currentPlotKey].status === 'available' ? 'sold' : 'available';
+                renderPlots();
+                openModal(currentPlotKey);
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').onclick = function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        };
+
+        // Initial render
+        renderPlots();
+    </script>
+</body>
+</html>

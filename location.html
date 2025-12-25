@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Location</title>
+	<style>
+		html, body { height: 100%; margin: 0; }
+		body {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #fff;
+		}
+		/* stack images vertically and add gap */
+		.img-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:1rem; }
+		.img-wrap img { max-width: 90%; height: auto; display: block; }
+	</style>
+</head>
+<body>
+	<main class="img-wrap">
+		<!-- new image placed above GA.png -->
+		<img src="Assets/SFL.png" alt="SFL image" id="sfl-image" />
+		<img src="Assets/GA.png" alt="GA image" id="ga-image" />
+	</main>
+</body>
+</html>
+
